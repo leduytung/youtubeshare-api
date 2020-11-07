@@ -7,5 +7,5 @@ development:
   <<: *default
   database: funny_movie
 
-# production:
+production:
   url: <%= ENV['DATABASE_URL'] %>
