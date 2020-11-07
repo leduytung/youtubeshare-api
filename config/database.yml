@@ -1,0 +1,11 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: funny_movie
+
+# production:
+  url: <%= ENV['DATABASE_URL'] %>
