@@ -1,7 +1,15 @@
 module Api::Secure
   class SecureV1Controller < ApplicationController
-    def list
-      render json: {messages: "NOTHING HERE"}, status: :ok
+    before_action :authenticate_user!
+
+    private
+    def authenticate_user!
+      @auth_service = AuthenticationService.new headers['Authorization']
+      unless @auth_service.valid?
+        raise AuthenticationError, 'Token invalid!'
+      end
+      @driver_id = @auth_service.current_driver_id
     end
+
   end
 end

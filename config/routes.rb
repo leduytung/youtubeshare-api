@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  devise_for :users, controllers: { 
+    sessions: 'api/devise/v1/users/sessions',
+    registrations: 'api/devise/v1/users/registrations'
+  }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   constraints do
     scope module: 'api' do

@@ -5,7 +5,6 @@ default: &default
 
 development:
   <<: *default
-  database: funny_movie
-
+  database: funnymovie
 production:
   url: <%= ENV['DATABASE_URL'] %>
