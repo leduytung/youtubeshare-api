@@ -3,8 +3,12 @@ default: &default
   encoding: unicode
   pool: 5
 
+test:
+  <<: *default
+  database: funnymovie_test
 development:
   <<: *default
   database: funnymovie
 production:
+  <<: *default
   url: <%= ENV['DATABASE_URL'] %>

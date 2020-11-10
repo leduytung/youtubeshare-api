@@ -6,7 +6,7 @@ class Api::Devise::V1::Users::RegistrationsController < Devise::RegistrationsCon
   def create
     # Registration service
     regis_service = RegistrationService.new(user_params)
-    result = regis_service.create_user
+    result = regis_service.process
 
     # Process response
     render json: result, status: regis_service.success ? :ok : :unprocessable_entity
