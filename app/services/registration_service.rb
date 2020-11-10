@@ -6,6 +6,15 @@ class RegistrationService
     @user = nil
   end
 
+  def process
+    create_user
+  end
+
+  def success
+    @user.errors.blank?
+  end
+
+  private
   def create_user
     @user = User.new @user_params
     if @user.save
@@ -20,9 +29,5 @@ class RegistrationService
         is_success: false 
       }
     end
-  end
-
-  def success
-    @user.errors.blank?
   end
 end

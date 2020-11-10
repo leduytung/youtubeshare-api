@@ -29,6 +29,12 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
+group :test do
+  gem 'rspec-rails'
+  gem 'database_cleaner-active_record'
+  gem 'faker'
+end
+
 gem 'devise'
 gem "simple_token_authentication", "~> 1.0"
 

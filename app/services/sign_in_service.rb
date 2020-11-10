@@ -27,8 +27,7 @@ class SignInService
   end
 
   def sign_up
-    regis_service = RegistrationService.new(@sign_in_params)
-    regis_service.create_user
+    RegistrationService.new(@sign_in_params).process
   end
 
 
@@ -36,8 +35,16 @@ class SignInService
     if user.valid_password?(@sign_in_params[:password])
       user.renew_authentication_token!
       @user = user
+      {
+        messages: "SignIn Successfully",
+        is_success: true,
+        user: @user
+      }
     else
-      {message: 'Invalid credential'}
+      {
+        messages: "SignIn Failed",
+        is_success: false
+      }
     end
   end
 end
