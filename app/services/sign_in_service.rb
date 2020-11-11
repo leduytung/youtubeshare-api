@@ -9,6 +9,7 @@ class SignInService
   # If user does not exist, use sign up
   def process
     define_user
+
     if @user
       sign_in
     else
@@ -27,9 +28,10 @@ class SignInService
   end
 
   def sign_up
-    RegistrationService.new(@sign_in_params).process
+    service = RegistrationService.new(@sign_in_params)
+    service.process
+    @user = service.user
   end
-
 
   def sign_in
     if user.valid_password?(@sign_in_params[:password])

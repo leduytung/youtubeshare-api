@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-class Api::Devise::V1::Users::RegistrationsController < Devise::RegistrationsController
+class Api::Devise::V1::RegistrationsController < Devise::RegistrationsController
   before_action :verify_params, only: :create
 
   # POST /resource

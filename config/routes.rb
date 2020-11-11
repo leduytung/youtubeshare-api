@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { 
-    sessions: 'api/devise/v1/users/sessions',
-    registrations: 'api/devise/v1/users/registrations'
+  devise_for :users, path: 'public/api/v1/auth', controllers: { 
+    sessions: "api/public/v1/sessions",
+    registrations: "api/public/v1/registrations"
   }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   constraints do
