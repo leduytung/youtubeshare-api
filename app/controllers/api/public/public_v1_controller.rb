@@ -1,4 +1,4 @@
 module Api::Public
-  class PublicV1Controller < ApplicationController
+  class PublicV1Controller < PublicApplicationController
   end
 end

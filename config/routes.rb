@@ -8,18 +8,18 @@ Rails.application.routes.draw do
     scope module: 'api' do
       namespace :secure do
         namespace :v1 do
-          resources :posts, only: [] do
+          resources :movies, only: [] do
             collection do
-              get 'list', to: 'posts#list'
+              get '/', to: 'movies#index'
             end
           end
         end
       end
       namespace :public do
         namespace :v1 do
-          resources :posts, only: [] do
+          resources :movies, only: [] do
             collection do
-              get 'list', to: 'posts#list'
+              get '/', to: 'movies#index'
             end
           end
         end
