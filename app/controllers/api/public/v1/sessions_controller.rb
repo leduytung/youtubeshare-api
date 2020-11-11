@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Api::Devise::V1::Users::SessionsController < Devise::SessionsController
+class Api::Public::V1::SessionsController < Devise::SessionsController
   # before_action :sign_in_params, only: :create
   # before_action :define_user, only: :create
 

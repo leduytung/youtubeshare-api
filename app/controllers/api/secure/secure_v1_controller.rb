@@ -1,15 +1,20 @@
 module Api::Secure
   class SecureV1Controller < ApplicationController
+    include Api::ExceptionsHandler
     before_action :authenticate_user!
 
     private
     def authenticate_user!
-      @auth_service = AuthenticationService.new headers['Authorization']
+      token = request.headers['Authorization']
+      raise AuthenticationError, 'Token missing!' if token.blank?
+      @auth_service = AuthenticationService.new(token)
+      @auth_service.process
       unless @auth_service.valid?
         raise AuthenticationError, 'Token invalid!'
       end
-      @driver_id = @auth_service.current_driver_id
+      @current_user = @auth_service.current_user
     end
-
   end
 end
+
+class AuthenticationError < StandardError; end

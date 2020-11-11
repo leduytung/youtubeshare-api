@@ -11,10 +11,10 @@ RSpec.describe "Movies", type: :request do
       expect(response).to have_http_status(200)
     end
 
-    it "JSON body response must same with record created" do
+    it "JSON body response must have allowed fields" do
       hash_body = JSON.parse(response.body)
       movie = hash_body["movies"].first
-      expect(movie).to eq(JSON.parse($movie.to_json))
+      expect(movie.keys).to match_array(Constants::PublicMoviesController::ResponseFieldsAllow)
     end
   end
 end
