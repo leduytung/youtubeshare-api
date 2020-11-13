@@ -8,6 +8,7 @@ class RegistrationService
 
   def process
     create_user
+    @result
   end
 
   def success
@@ -16,8 +17,9 @@ class RegistrationService
 
   private
   def create_user
-    @user = User.new @user_params
-    if @user.save
+    user = User.new @user_params
+    @result = if user.save
+      @user = user
       {
         messages: "Registration Successfully",
         is_success: true,
@@ -25,8 +27,8 @@ class RegistrationService
       }
     else
       {
-        messages: @user.errors.messages, 
-        is_success: false 
+        messages: user.errors.messages, 
+        is_success: false
       }
     end
   end

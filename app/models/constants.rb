@@ -4,6 +4,6 @@ module Constants
     end
 
     class SecureMoviesController
-      ResponseFieldsAllow = ["id", "title", "description", "user_id", "upvote", "downvote"]
+      ResponseFieldsAllow = ["id", "title", "description", "user_id", "like", "dislike"]
     end
 end
