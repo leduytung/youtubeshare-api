@@ -9,7 +9,7 @@ class Api::Public::V1::SessionsController < Devise::SessionsController
     result = sign_in_service.process
 
     # Process response
-    render json: result, status: sign_in_service.success ? :ok : :unauthorized
+    render json: result, status: sign_in_service.success? ? :ok : :unauthorized
   end
 
   def destroy

@@ -9,7 +9,7 @@ class Api::Devise::V1::RegistrationsController < Devise::RegistrationsController
     result = regis_service.process
 
     # Process response
-    render json: result, status: regis_service.success ? :ok : :unprocessable_entity
+    render json: result, status: regis_service.success? ? :ok : :unprocessable_entity
   end
 
   private
