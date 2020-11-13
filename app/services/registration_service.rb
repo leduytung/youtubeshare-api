@@ -4,22 +4,22 @@ class RegistrationService
   def initialize(user_params)
     @user_params = user_params
     @user = nil
+    @success = false
   end
 
   def process
     create_user
-    @result
   end
 
-  def success
-    @user.errors.blank?
+  def success?
+    @success
   end
 
   private
   def create_user
     user = User.new @user_params
-    @result = if user.save
-      @user = user
+    if user.save
+      @success = true
       {
         messages: "Registration Successfully",
         is_success: true,
