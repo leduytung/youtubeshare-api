@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, path: 'public/api/v1/auth', controllers: { 
+  devise_for :users, path: 'public/v1/auth', controllers: { 
     sessions: "api/public/v1/sessions",
     registrations: "api/public/v1/registrations"
   }
@@ -11,6 +11,12 @@ Rails.application.routes.draw do
           resources :movies, only: [] do
             collection do
               get '/', to: 'movies#index'
+            end
+          end
+
+          resources :users, only: [] do
+            collection do
+              get 'verify_token', to: 'users#verify_token'
             end
           end
         end
