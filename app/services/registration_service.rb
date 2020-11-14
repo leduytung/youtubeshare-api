@@ -17,8 +17,8 @@ class RegistrationService
 
   private
   def create_user
-    user = User.new @user_params
-    if user.save
+    @user = User.new @user_params
+    if @user.save
       @success = true
       {
         messages: "Registration Successfully",

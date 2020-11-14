@@ -10,7 +10,6 @@ class SignInService
   # If user does not exist, use sign up
   def process
     define_user
-
     if @user
       sign_in
     else
@@ -30,6 +29,8 @@ class SignInService
   def sign_up
     service = RegistrationService.new(@sign_in_params)
     @result = service.process
+    @success = service.success?
+    @result
   end
 
   def sign_in

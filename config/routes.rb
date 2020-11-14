@@ -19,6 +19,13 @@ Rails.application.routes.draw do
               get 'verify_token', to: 'users#verify_token'
             end
           end
+
+          resources :reactions, only: [] do
+            collection do
+              post '/', to: 'reactions#react'
+              post '/list', to: 'reactions#get_reactions'
+            end
+          end
         end
       end
       namespace :public do
@@ -26,6 +33,11 @@ Rails.application.routes.draw do
           resources :movies, only: [] do
             collection do
               get '/', to: 'movies#index'
+            end
+          end
+          resources :users, only: [] do
+            collection do
+              post '/emails', to: 'users#emails'
             end
           end
         end
