@@ -4,7 +4,6 @@ module Api::Public
 
     private
     def authenticate_user!
-      binding.pry
       token = request.headers['Authorization']
       raise AuthenticationError, 'Token missing!' if token.blank?
       @auth_service = AuthenticationService.new(token)
