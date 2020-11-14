@@ -1,7 +1,7 @@
 module Api::Secure::V1
   class ReactionsController < Api::Secure::SecureV1Controller
     def react
-      ReactionService.react(movies_params.merge(user_id: @current_user))
+      ReactionService.react(movies_params.merge(user_id: @current_user.id))
       render status: :ok
     end
 

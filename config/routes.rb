@@ -11,6 +11,7 @@ Rails.application.routes.draw do
           resources :movies, only: [] do
             collection do
               get '/', to: 'movies#index'
+              post '/', to: 'movies#create'
             end
           end
 
