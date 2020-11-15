@@ -43,10 +43,6 @@ RSpec.describe SignInService do
       it "user should have authentication_token" do
         expect(result[:user][:authentication_token]).not_to be_nil
       end
-
-      it "user should have different authentication_token" do
-        expect(result[:user][:authentication_token]).not_to eq $authentication_token
-      end
     end
 
     context "action sign in with wrong password" do

@@ -2,8 +2,9 @@ require 'rails_helper'
 
 RSpec.describe "Movies", type: :request do
   describe "GET" do
-    before do
-      $movie = create(:movie)
+    before(:all) do
+      $user = create(:user)
+      $movie = create(:movie, user_id: $user.id)
       get '/public/v1/movies'
     end
 
