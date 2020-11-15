@@ -1,7 +1,6 @@
 FactoryBot.define do
   factory :movie do
     title {Faker::Movie.title}
-    user_id {Random.rand(10..100)}
     description {Faker::Company.bs}
     like {Random.rand(10..100)}
     dislike {Random.rand(10..100)}
